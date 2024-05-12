@@ -1,6 +1,7 @@
 
 
-console.log('Estás en el js de las clases.')
+// Crear una nueva clase a raiz de una clase ya creada y que herede sus propiedades
+
 class Pokemon {
     constructor(nombre, tipo, nivel, vida){
         this.nombre = nombre;
@@ -31,16 +32,18 @@ class Pokemon {
     }
 }
 
-let pikachu = new Pokemon('Pikachu', 'Electrico', 50, 200);
+class pokemonLegendario extends Pokemon{
+    constructor(nombre, tipo, nivel, vida){
+        super(nombre, tipo, nivel, vida);
+        this.superpoder = 'Ventisca';
+    }
 
-pikachu.informacion();
-pikachu.recibirDaño(20);
-pikachu.recibirDaño(30);
-pikachu.subirNivel();
-pikachu.subirNivel();
-pikachu.subirNivel();
+    superPoder(){
+        console.log(`${this.nombre} ha usado su superpoder ${this.superpoder}`);
+    }
+}
 
-let mewTwo = new Pokemon('MewTwo', 'Psíquico', 100, 1000);
-mewTwo.informacion();
-mewTwo.recibirDaño(30);
-mewTwo.subirNivel();
+let articuno = new pokemonLegendario('Articuno', 'Hielo', 100, 1000);
+
+articuno.informacion();
+articuno.superPoder('Ventisca');
